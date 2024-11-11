@@ -3,7 +3,7 @@
  * "Wesnot 1.14.9 Internal DLL hack by KeesOG"
  * ----------------------------------------------------------------------------
  * Description:
- * This dynamic-link library (DLL) demonstrates a simple game hack that modifies
+ * This dynamic-link library (DLL) demonstrates a game hack that modifies
  * the player's gold amount in a game upon injecting the DLL. It alters the game
  * memory to set the gold value to 420 whenever a specific in-game action
  * (opening terrain description) occurs.
