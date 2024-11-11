@@ -1,4 +1,4 @@
-# 🏰 Internal Wesnot Hack by KeesOG 🎮
+# 🏰 Internal dll codecave Wesnoth Hack by KeesOG 🎮
 
 ## 📝 Overview
 Welcome to the Wesnoth Hack repository! This project features a dynamic link library (DLL) hack for the game **Battle for Wesnoth**, engineered to boost your gold value by injecting a custom codecave directly into the game's process. 🪄
