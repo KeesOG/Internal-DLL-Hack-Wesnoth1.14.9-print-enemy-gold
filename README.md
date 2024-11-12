@@ -1,62 +1,69 @@
-# 🏰 Internal DLL codecave Wesnoth Hack by KeesOG 🎮
+# Game Memory Manipulation with DLL Injection
 
-## 📝 Overview
-Welcome to the Wesnoth Hack repository! This project features a dynamic link library (DLL) hack for the game **Battle for Wesnoth**, engineered to boost your gold value by injecting a custom codecave directly into the game's process. 🪄
+**Author: KeesOG**
 
-## ✨ Features
-- **💰 Dynamic Gold Modification:** Automatically set your gold to **420** by opening the terrain description in-game.
-- **🛎️ Injection Notification:** Receive a message box notification upon successful DLL injection.
-- **🧩 Inline Assembly:** Utilizes inline assembly for efficient and seamless integration into the game.
+## 🎮 Overview
+Ready to dive into the exhilarating world of game hacking? This project is all about tapping into a game's memory and tweaking in-game values for fun and learning. By injecting a DLL, you can reveal the enemy's gold value right in the game. We'll journey through memory pointers, carve out our secret code cave, and change memory protections. Let’s uncover the magic behind the scenes!
 
-## ⚙️ Technical Details
+---
 
-### 🧠 Memory Address Resolution
-1. **🗺️ Player Base Address Identification:**
-   - The player's data base address is a constant pointer at `0x017EED18`, serving as the launch point for accessing player-specific memory data.
+## Key Components
 
-2. **🔗 Navigating Pointer Chains:**
-   - From `player_base`, compute `game_base` by dereferencing `player_base` and adding `0xA90`.
-   - Locate the player's gold value address by further dereferencing `game_base` and adding `0x4`.
+### 🔑 Memory Pointers
+Think of these as coordinates on a treasure map, leading us to specific spots in the game's memory. We'll use pointers like `player_base`, `game_base`, and `enemy_gold` to locate and change the data we want.
 
-### 🛠️ Codecave Implementation
-1. **📌 Memory Hook:**
-   - The DLL hooks into a specific location in the game's code at `0x00CCAF8A`. This hook redirects the game's execution flow to a codecave where custom code is executed.
+### 🕳 Code Cave
+This is our secret hideout in the game’s memory—a safe spot where we can insert our custom code without messing up the game's normal operations.
 
-2. **🧮 Address Calculation:**
-   - Calculate the player base, game base, and gold addresses in memory using the pointer chains.
+### 🔒 Memory Protection
+The game's memory is usually guarded to block unauthorized changes. We’ll use some clever techniques to temporarily lift these protections, letting us make the modifications we need.
 
-3. **🏅 Gold Modification:**
-   - Within the codecave, set the player's gold amount to **420** whenever the terrain description is opened in-game.
+---
 
-4. **🔄 Execution Redirection:**
-   - Restore the game's original instructions and redirect execution back to the game's original flow at address `0x00CCAF90`.
+## 📜 Detailed Process
 
-### 🔐 Memory Management and Protection
-1. **🛡️ Memory Protection:**
-   - Change the memory protection of the hook location to allow code execution modification using `VirtualProtect`.
+### 🛠 DLL Injection
 
-2. **🔧 Hook Installation:**
-   - Write a jump instruction at the hook location to redirect execution to the codecave. This involves:
-     - ✍️ Writing the JMP opcode (`0xE9`).
-     - 📏 Calculating and writing the relative address for the jump.
-     - 🔄 Adding a NOP instruction (`0x90`) to align the code.
+- **Initialization:** When our DLL is injected, it begins by setting up the environment. This includes tweaking the memory protection settings at a specific spot so we can write our instructions there.
 
-3. **🧵 Thread Injection and Monitoring:**
-   - Upon DLL load, the DLL creates a new thread to monitor and manage the in-game actions. This thread ensures the hack remains active and responsive.
+### 🔌 Hooking the Assembly Call
 
-4. **🛡️ Memory Safety:**
-   - Ensure memory integrity by restoring the original protection settings after modifying the hook location. This prevents other processes from inadvertently writing to or corrupting the game memory.
+- **Inserting the Jump:** At a key point in the game’s code, we insert a jump instruction. This redirects the game’s execution to our custom code cave.
+- **Why Assembly?:** Assembly language lets us directly interact with the CPU's registers and instructions, giving us precise control over the game’s behavior.
 
-## 🚀 Installation
-1. **🔧 Compile the DLL:**
-   - Use a C++ compiler to compile the source code into a DLL file.
-2. **🔗 Inject the DLL:**
-   - Utilize a DLL injector to inject the compiled DLL into the Battle for Wesnoth process.
-3. **✨ Activate the Hack:**
-   - Open the terrain description in-game to set your gold to **420**.
+### 🏴‍☠️ Retrieving Enemy Gold
+
+- **Pointer Navigation:** We follow a series of pointers to find the enemy gold value, like following breadcrumbs through the game's memory.
+
+### ✍️ Modifying the String
+
+- **Conversion:** We convert the enemy gold value into a string format.
+- **Inserting the String:** Our custom code updates the game's memory to display this gold value, by directly manipulating the CPU's registers and memory addresses within our code cave.
+
+### 🧩 Understanding the Registers
+
+- **Pushad and Popad:** These instructions save and restore all general-purpose registers, ensuring our changes don’t interfere with the game’s normal operations.
+- **Registers in Action:** By moving the converted gold value into specific registers, we can update the game's display string. For example, using the `eax` register to point to the string location and `bl` to hold each byte of the gold value.
+
+### 🔄 Restoring Original Functionality
+
+- **Calling the Original Function:** After tweaking the string, we call the original function to keep the game running smoothly.
+- **Returning to Normal:** Finally, we jump back to the original return address, letting the game continue as normal.
+
+---
+
+## 🚀 Usage
+
+1. **Compile the DLL:** Set up your development environment and compile the provided C++ code into a DLL.
+2. **Inject the DLL:** Use a DLL injector tool to inject your compiled DLL into the game’s process.
+3. **Observe the Magic:** Once injected, watch as the enemy gold value is displayed in-game, right where you wanted it!
+
+---
 
 ## ⚠️ Disclaimer
-Use this hack at your own risk. Modifying game memory can lead to unpredictable behavior and may violate the game's terms of service. Always back up your game data before using hacks or modifications.
+This code is for educational purposes only. Using it in online games without authorization can violate terms of service and lead to consequences. Always use this knowledge responsibly and ethically.
 
-## 📜 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+---
+
+## 📄 License
+MIT License
