@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DLL-Codecave-Wesnoth-1.14.9", "DLL-Codecave-Wesnoth-1.14.9\DLL-Codecave-Wesnoth-1.14.9.vcxproj", "{2A2F874F-47E1-4300-8CDD-0CD92752E05D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DLL-Codecave-Gold-Display-Wesnoth-1.14.9", "DLL-Codecave-Wesnoth-1.14.9\DLL-Codecave-Wesnoth-1.14.9.vcxproj", "{2A2F874F-47E1-4300-8CDD-0CD92752E05D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
