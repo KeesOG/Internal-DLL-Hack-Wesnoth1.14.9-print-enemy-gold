@@ -103,7 +103,7 @@ __declspec(naked) void codecave() {
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
     if (fdwReason == DLL_PROCESS_ATTACH) {
         // Notify that the DLL has been injected
-        MessageBox(NULL, L"DLL injected into game!", L"mHACKeroni by KeesOG", MB_OK | MB_ICONINFORMATION);
+        MessageBox(0, L"Hack injected!\nright-click > terrain description\n\nby: KeesOG", L"Inject successful", MB_ICONINFORMATION|MB_OK);
 
         // Change the protection of the memory page to allow writing
         VirtualProtect((void*)hook_location, 6, PAGE_EXECUTE_READWRITE, &old_protect);
